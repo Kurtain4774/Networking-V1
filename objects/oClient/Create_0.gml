@@ -11,7 +11,11 @@ network_connect(client, ip, port);
 //Create Our Player
 instances = ds_map_create();
 idd = 0;
-Player = instance_create_layer(random(room_width), random(room_height), "Instances", oPlayer);
+if(global.first){
+	Player = instance_create_layer(100, room_height / 2, "Instances", oPlayer);
+}else{
+	Player = instance_create_layer(room_width - 100, room_height / 2, "Instances", oPlayer);
+}
 idd = Player.my_id;
 
 ds_map_add(instances, idd, Player);

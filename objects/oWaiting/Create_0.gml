@@ -27,7 +27,9 @@ enum states{
 	PAUSED
 };
 
+
 global.game_state = states.PAUSED;
 
+global.first = false;
 alarmSet = false;
 
