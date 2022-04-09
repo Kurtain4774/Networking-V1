@@ -3,6 +3,13 @@
 
 idd = 0;
 
+randomize();
+
+//Network Variables
+var choice = irandom_range(1, 10000);
+my_id = choice;
+
+
 //Send Our Data
 var buff = buffer_create(32, buffer_grow, 1);
 buffer_seek(buff, buffer_seek_start, 0);
