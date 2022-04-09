@@ -22,6 +22,8 @@ if (client < 0) {
 	game_restart();
 }
 
+alarm[1] = room_speed; //For placing users at opposite room sides
+
 enum states{
 	PLAYING,
 	PAUSED

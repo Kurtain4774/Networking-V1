@@ -9,4 +9,4 @@ buffer_write(buff, buffer_u8, network.join);					//Set the ID of the packet to t
 buffer_write(buff, buffer_u16, my_id);					//Send our HP as an integer
 network_send_packet(oWaiting.client, buff, buffer_tell(buff));	//Send this packet to the server using the client's socket
 buffer_delete(buff);
-	
+
