@@ -65,6 +65,28 @@ function server_data() {
 		break;
 		#endregion
 		
+		#region Shooting
+		case network.join:
+			//Read the data that was sent to us, and store it in temporary variables
+			var personID =		buffer_read(packet, buffer_u16);	//Remember *** Read in the same order it was sent!
+			
+			
+			//Now send this data back to all of the clients currently connected to the server
+			var person_buffer = buffer_create(32, buffer_grow, 1);
+			buffer_seek(person_buffer, buffer_seek_start, 0);
+			buffer_write(person_buffer, buffer_u8, network.join); //Remember to send the packet ID first!
+			buffer_write(person_buffer, buffer_u16, personID);
+			
+			//Loop through the total player list (containing sockets) and send the packet to each one
+			for (var i = 0; i < ds_list_size(total_players); i++) {
+				network_send_packet(ds_list_find_value(total_players, i), person_buffer, buffer_tell(person_buffer));	
+			}
+			
+			//Delete the buffer after sending the data
+			//buffer_delete(buff);
+		break;
+		#endregion
+		
 		
 	}
 

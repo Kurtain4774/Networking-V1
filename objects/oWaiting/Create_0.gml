@@ -11,7 +11,7 @@ network_connect(client, ip, port);
 //Create Our Player
 instances = ds_map_create();
 idd = 0;
-Player = instance_create_layer(random(room_width), random(room_height), "Instances", oPlayer);
+Player = instance_create_layer(0,0, "Instances", oPerson);
 idd = Player.my_id;
 
 ds_map_add(instances, idd, Player);
@@ -21,4 +21,12 @@ if (client < 0) {
 	show_message("Error connecting to server.");
 	game_restart();
 }
+
+enum states{
+	PLAYING,
+	PAUSED
+};
+
+global.game_state = states.PAUSED;
+
 
